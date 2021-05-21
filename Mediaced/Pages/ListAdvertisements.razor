@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
-            <h2>Список объявлений</h2>
+            <h2>Список вакансий</h2>
         </div>
     </div>
     <div class="row">
@@ -18,31 +18,25 @@
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">ФИО</th>
-                        <th scope="col">Номер телефона</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Age</th>
-                        <th scope="col">Advertisement Text</th>
-                        <th scope="col">Price USD</th>
-                        <th scope="col">Course</th>
-                        <th scope="col">Price BYN</th>
+                        <th scope="col">Наименование вакансии</th>
+                        <th scope="col">Номер телефона компании</th>
+                        <th scope="col">Зарплата в USD</th>
+                        <th scope="col">Курс</th>
+                        <th scope="col">Зарплата в BYN</th>
                     </tr>
                 </thead>
                 <tbody>
 
                     @foreach (var x in advs)
                     {
-                        <tr>
-                            <th scope="row">@x.id</th>
-                            <td>@(x.firstName + " " + x.lastName + " " + x.patronimic)</td>
-                            <td>@x.phoneNumber</td>
-                            <td>@x.email</td>
-                            <td>@x.age</td>
-                            <td>@x.advText</td>
-                            <td>@x.priceUSD</td>
-                            <td>@x.courseOfUSD</td>
-                            <td>@x.priceBYN</td>
-                        </tr>
+                    <tr>
+                        <th scope="row">@x.id</th>
+                        <td>@x.name</td>
+                        <td>@x.phoneNumber</td>
+                        <td>@x.salaryusd</td>
+                        <td>@x.courseOfUSD</td>
+                        <td>@x.salarybyn</td>
+                    </tr>
                     }
 
 

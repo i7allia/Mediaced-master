@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
-            <h2>Добавить объявление</h2>
+            <h2>Добавить вакансию</h2>
         </div>
     </div>
     <div class="row">
@@ -25,53 +25,28 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="fnlnp" class="col-sm-3 col-form-label">ФИО</label>
+                    <label for="name" class="col-sm-3 col-form-label">Наименование вакансии</label>
 
                     <div class="col-sm-9">
-                        <input @bind="fnlnp" type="text" class="form-control" id="fnlnp" required />
+                        <input @bind="name" type="text" class="form-control" id="name" required />
                     </div>
 
                 </div>
 
                 <div class="form-group row">
-                    <label for="phone" class="col-sm-3 col-form-label">Телефон</label>
+                    <label for="phone" class="col-sm-3 col-form-label">Номер телефона компании</label>
 
                     <div class="col-sm-9">
                         <input @bind="adv.phoneNumber" type="text" class="form-control" id="phone" required />
                     </div>
 
                 </div>
+                      
 
                 <div class="form-group row">
-                    <label for="email" class="col-sm-3 col-form-label">Email</label>
-
+                    <label for="price-usd" class="col-sm-3 col-form-label">Зарплата в USD</label>
                     <div class="col-sm-9">
-                        <input @bind="adv.email" type="text" class="form-control" id="email" required />
-                    </div>
-
-                </div>
-
-                <div class="form-group row">
-                    <label for="content" class="col-sm-3 col-form-label">Текст объявления</label>
-
-                    <div class="col-sm-9">
-                        <textarea @bind="adv.advText" type="textarea" class="form-control" id="contnent"
-                                  placeholder="Напишите текст объявления" required />
-                    </div>
-
-                </div>
-
-                <div class="form-group row">
-                    <label for="age" class="col-sm-3 col-form-label">Возраст</label>
-                    <div class="col-sm-9">
-                        <input @bind="adv.age" type="text" class="form-control" id="age" placeholder="18" required />
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label for="price-usd" class="col-sm-3 col-form-label">Цена USD</label>
-                    <div class="col-sm-9">
-                        <input @bind="adv.priceUSD" type="text" class="form-control" id="price-usd" required />
+                        <input @bind="adv.salaryusd" type="text" class="form-control" id="price-usd" required />
                     </div>
                 </div>
 
@@ -83,9 +58,9 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="price-byn" class="col-sm-3 col-form-label">Цена в BYN</label>
+                    <label for="price-byn" class="col-sm-3 col-form-label">Зарплата в BYN</label>
                     <div class="col-sm-9">
-                        <input type="text" readonly class="form-control" id="price-byn" value="@getPriceBYN()" />
+                        <input type="text" readonly class="form-control" id="price-byn" value="@getsalarybyn()" />
                     </div>
                 </div>
 
@@ -100,7 +75,7 @@
 @code {
 
     Advertisement adv;
-    String fnlnp;
+    String name;
 
     CurrencyCourse course;
 
@@ -110,6 +85,7 @@
 
         var response = await Http.GetStringAsync("http://127.0.0.1:3000/getcourse");
         course = JsonConvert.DeserializeObject<CurrencyCourse>(response);
+       // Console.WriteLine(response);
         adv.courseOfUSD = course.Course;
     }
 
@@ -120,20 +96,15 @@
         adv = new Advertisement();
     }
 
-    private float getPriceBYN()
+    private float getsalarybyn()
     {
-        adv.priceBYN = adv.priceUSD * course.Course;
-        return adv.priceBYN;
+        adv.salarybyn = adv.salaryusd * course.Course;
+        return adv.salarybyn;
     }
 
     protected async Task submitForm()
     {
-        string[] words = fnlnp.Split(' ');
-
-        adv.firstName = words[0];
-        adv.lastName = words[1];
-        adv.patronimic = words[2];
-
+        
         await Http.PostAsJsonAsync<Advertisement>("http://localhost:50001/api/Advertisement/addAdvertisement", adv);
         // NavManager.NavigateTo("/advlist");
     }
