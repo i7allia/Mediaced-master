@@ -1,0 +1,89 @@
+﻿@page "/advlist"
+
+@using Newtonsoft.Json
+@inject HttpClient Http
+
+<div class="workblock">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <h2>Список объявлений</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-6">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">ФИО</th>
+                        <th scope="col">Номер телефона</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">Advertisement Text</th>
+                        <th scope="col">Price USD</th>
+                        <th scope="col">Course</th>
+                        <th scope="col">Price BYN</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var x in advs)
+                    {
+                        <tr>
+                            <th scope="row">@x.id</th>
+                            <td>@(x.firstName + " " + x.lastName + " " + x.patronimic)</td>
+                            <td>@x.phoneNumber</td>
+                            <td>@x.email</td>
+                            <td>@x.age</td>
+                            <td>@x.advText</td>
+                            <td>@x.priceUSD</td>
+                            <td>@x.courseOfUSD</td>
+                            <td>@x.priceBYN</td>
+                        </tr>
+                    }
+
+
+
+                </tbody>
+
+            </table>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@code {
+    public List<Advertisement> advs;
+
+    /*protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        advs = new List<Advertisement>();
+
+        Advertisement adv1 = new Advertisement(1, "Dzhon", "Maxwell", "Евгеньевич",
+                                                    "+375445698787", "maxwell@mail.ru", 25,
+                                                    "Текст объявления", 5.2f, 2.8f, 15.3f);
+
+        advs.Add(adv1);
+    } */
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        advs = new List<Advertisement>();
+        String jsonString = await Http.GetStringAsync("http://localhost:50001/api/Advertisement/GetList");
+
+        Console.WriteLine(jsonString);
+        advs = JsonConvert.DeserializeObject<List<Advertisement>>(jsonString);
+    }
+
+}
