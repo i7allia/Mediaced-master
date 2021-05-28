@@ -1,0 +1,152 @@
+{
+  "id": "e0edfe34-fa06-4f58-9f8c-3397fc90ddfb",
+  "version": "2.0",
+  "name": "Vacances Add",
+  "url": "http://localhost:50000/addadv",
+  "tests": [{
+    "id": "23fa9ed0-7344-4507-aa85-d471a02a36f6",
+    "name": "Vacances add",
+    "commands": [{
+      "id": "90b10f3b-36e9-45a8-a47b-145c3d17e022",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:50000/addadv",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a3c4a850-0ab8-4489-8b59-d4151de60458",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "837x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "29216831-90e8-4fc8-a95f-b76cd76f9d9d",
+      "comment": "",
+      "command": "click",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fc47e3e1-8eb9-4c5a-89a8-f0ee28ef90cd",
+      "comment": "",
+      "command": "type",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": "Оператор ПЭВМ"
+    }, {
+      "id": "dc36d1c5-6a38-4686-a2e1-553ce57c799b",
+      "comment": "",
+      "command": "click",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7da79a4c-c93e-460e-81a8-a6971e3d280e",
+      "comment": "",
+      "command": "type",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "+375295336699"
+    }, {
+      "id": "0d4c0820-4f54-46a6-a787-00c9148eaf10",
+      "comment": "",
+      "command": "click",
+      "target": "id=price-usd",
+      "targets": [
+        ["id=price-usd", "id"],
+        ["css=#price-usd", "css:finder"],
+        ["xpath=//input[@id='price-usd']", "xpath:attributes"],
+        ["xpath=//div[4]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "63440df0-c84e-4106-9e58-9e844b3e63a9",
+      "comment": "",
+      "command": "type",
+      "target": "id=price-usd",
+      "targets": [
+        ["id=price-usd", "id"],
+        ["css=#price-usd", "css:finder"],
+        ["xpath=//input[@id='price-usd']", "xpath:attributes"],
+        ["xpath=//div[4]/div/input", "xpath:position"]
+      ],
+      "value": "300"
+    }, {
+      "id": "f1ff960c-43c4-4e72-b347-34884bf3f4a1",
+      "comment": "",
+      "command": "click",
+      "target": "id=price-byn",
+      "targets": [
+        ["id=price-byn", "id"],
+        ["css=#price-byn", "css:finder"],
+        ["xpath=//input[@id='price-byn']", "xpath:attributes"],
+        ["xpath=//div[6]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a5ba1d7c-4cd4-41de-ae9e-02f08f09f39b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Отправить')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "38d8f33b-d8d5-4250-aee0-41bf6dddf9de",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Объявления",
+      "targets": [
+        ["linkText=Объявления", "linkText"],
+        ["css=.nav-item:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Объявления')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/advlist')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Объявления')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0f26fc52-e7d7-4302-be9d-65a4328e9c60",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "7622be60-bc60-4452-a7f9-4c0a6d758d17",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["23fa9ed0-7344-4507-aa85-d471a02a36f6"]
+  }],
+  "urls": ["http://localhost:50000/addadv"],
+  "plugins": []
+}
